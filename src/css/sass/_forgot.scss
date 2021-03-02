@@ -1,0 +1,33 @@
+.forgot{
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+
+    .content{
+        display: grid;
+        justify-self: center;
+        align-self: center;
+        padding: 10px;
+        justify-items: center;
+        max-width: 90vw;
+        box-shadow: 0 0 5px 0 #eee;
+        border-radius: 4px;
+
+        h1{
+            text-align: center;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .input{
+            margin: 10px 0;
+        }
+
+        button{
+            margin-top: 5px;
+            width: 100%;
+        }
+
+    }
+
+}

@@ -1,0 +1,36 @@
+.snackbar{
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    border-radius: 4px;
+    background: #000;
+    color: #fff;
+    box-shadow: 0 0 2.5px 0 #000;
+    font-family: sans-serif;
+    font-size: 16pt;
+    transition: 0.75s linear;
+    padding: 10px;
+    max-width: 90vw;
+    word-break: break-all;
+
+    a{
+        text-decoration: none;
+        color: cyan;
+        background-color: rgba(0, 234, 255, 0.15);
+        padding: 5px;
+        border-radius: 4px;
+    }
+
+    &.hide{
+        bottom: -100%;
+    }
+
+}
+
+@media screen and (max-width: 503px){
+    .snackbar{
+        left: 50%;
+        transform: translate(-50%);
+        width: 90vw;
+    }
+}

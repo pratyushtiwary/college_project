@@ -1,0 +1,39 @@
+.input{
+    position: relative;
+    width: 400px;
+    margin-bottom: 10px;
+
+    label{
+        position: relative;
+        width: 100%;
+        color: #000;
+        font-family: sans-serif;
+    }
+    
+    input{
+        position: relative;
+        width: 100%;
+        font-size: 16pt;
+        font-family: sans-serif;
+        outline: none;
+        padding: 10px;
+        margin-top: 5px;
+        background: transparent;
+        border: none;
+        border-radius: 2px;
+        background: #eee;
+    }
+
+    .error{
+        margin-top: 2.5px;
+        color: red;
+        font-size: 12pt;
+    }
+
+}
+
+@media screen and (max-width: 503px){
+    .input{
+        width: 100%;
+    }
+}

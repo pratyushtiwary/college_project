@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    font-size: 16pt;
+}
+
+a{
+    text-decoration: none !important;
+}
+
+h1{
+    margin-bottom: 15px;
+    text-decoration: underline;
+}
+
+.process_loading{
+    display: grid !important;
+    justify-self: center !important;
+    font-size: 0 !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: #fff !important;
+    border: 1px solid #000 !important;
+    border-radius: 50% !important;
+    border-left: 1px solid transparent !important;
+    animation: load 1s 0.25s ease-in-out infinite !important;
+}
+
+@keyframes load{
+    0%{
+        transform: rotate(360deg);
+    }
+}
+
+//components
+@import "input";
+@import "button";
+@import "snackbar";
+
+//pages
+@import "home";
+@import "register";
+@import "login";
+@import "forgot";
+
+@media screen and (max-width: 900px){
+    h1{
+        width: 100%;
+        text-align: center;
+    }
+}
