@@ -19,7 +19,9 @@ class User:
         self.__connection = pymysql.connect(host=vars.host,
             user = vars.username,
             password = vars.password,
-            db = vars.db
+            db = vars.db,
+            charset = "utf8mb4",
+            cursorclass = pymysql.cursors.DictCursor
         )
 
     def __save_otp(self,username,otp):
@@ -88,7 +90,7 @@ class User:
                 if stmt:
                     c = cursor.fetchone()
                     cursor.close()
-                    return c[0]
+                    return c["Email"]
                 else:
                     print(stmt)
                     return 0
@@ -113,7 +115,7 @@ class User:
                 if stmt:
                     c = cursor.fetchone()
                     cursor.close()
-                    if c[0]==otp:
+                    if c["Code"]==otp:
                         return 1
                     else:
                         return 0
@@ -171,9 +173,10 @@ class User:
                 if stmt:
                     c = cursor.fetchone()
                     cursor.close()
-                    username = c[0]
-                    email = c[1]
-                    pwd = c[2]
+                    print(c)
+                    username = c["Username"]
+                    email = c["Email"]
+                    pwd = c["Password"]
                     data = {
                             "username": username,
                             "email": email
@@ -184,7 +187,8 @@ class User:
                         return "0"
                 else:
                     return "2"
-            except:
+            except pymysql.Error as e:
+                print(e.args[1])
                 return error(1071)
 
 
