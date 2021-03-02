@@ -1,7 +1,7 @@
 host = "localhost"
 username = "root"
-password = "auth_sys"
-db = "sql12395338"
+password = ""
+db = "auth_sys"
 
 email = {
     "username": "YOUR EMAIL ID",
