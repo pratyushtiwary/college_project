@@ -1,5 +1,7 @@
 The `master` branch contains the backend of the project.
 
+Live URL :- [https://pratyushtiwary.github.io/college_project/](https://pratyushtiwary.github.io/college_project/)
+
 ## Features :-
 	- End-to-end encryption, &
 	- hashed the password in the backend for protection
