@@ -58,7 +58,7 @@ class User:
             s = smtplib.SMTP("smtp.gmail.com",587)
             s.starttls()
             s.login(vars.email["username"],vars.email["password"])
-            otp = random.randint(000000,999999)
+            otp = random.randint(111111,999999)
             message = MIMEMultipart()
             message["From"] = vars.email["username"]
             message["To"] = email
@@ -94,6 +94,7 @@ class User:
                     return 0
             except pymysql.Error as e:
                 print(e.args[1])
+                print("ERROR",sql)
                 return 0
 
     def forgot(self,username):
@@ -112,7 +113,6 @@ class User:
                 if stmt:
                     c = cursor.fetchone()
                     cursor.close()
-                    print(c[0])
                     if c[0]==otp:
                         return 1
                     else:
@@ -137,16 +137,20 @@ class User:
 
     def __change_pass(self,username,new_pass):
         password = hashlib.md5(new_pass.encode()).hexdigest()
-        sql = f"UPDATE `users` SET `Password`='{password}' WHERE `Username`='{username}';"
+        sql = f"UPDATE `users` SET `Password`='{password}' WHERE `users`.`Username`='{username}';"
         with self.__connection.cursor() as cursor:
             try:
                 stmt = cursor.execute(sql)
-                if stmt and self.__del_otp(username):
+                k = self.__del_otp(username)
+                if stmt and k:
                     self.__connection.commit()
                     cursor.close()
                     return "1"
+                elif not stmt and k:
+                    return "1"
                 return error(1068)
-            except:
+            except pymysql.Error as e:
+                print(e.args[1])
                 return error(1068)
 
     def reset_pass(self,username,otp,new_pass):
@@ -210,7 +214,7 @@ class User:
                     cursor.close()
                     return "1"
                 return "0"
-            except:
+            except pymysql.Error as e:
                 if e.args[0]==1062:
                     return error(1062)
                 return error(1071)
