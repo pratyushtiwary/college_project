@@ -11,7 +11,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 class User:
-    __connection = None
     def __init__(self):
         """
             Used for working with user!
