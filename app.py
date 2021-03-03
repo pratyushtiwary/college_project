@@ -1,5 +1,4 @@
 from flask import Flask, request, abort
-from datetime import timedelta
 from model.user import User
 import controller.secure as secure
 import json
